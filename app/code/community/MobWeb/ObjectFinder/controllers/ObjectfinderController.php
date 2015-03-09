@@ -89,27 +89,18 @@ class MobWeb_ObjectFinder_ObjectfinderController extends Mage_Adminhtml_Controll
 
                 // Try to get the type in a human-readable format
                 $resultData['type'] = get_class($result);
-                switch($resultData['type']) {
-
-                    case 'Mage_Sales_Model_Order':
+                if($result INSTANCEOF Mage_Sales_Model_Order) {
                         $resultData['type'] = 'Order';
-                        break;
-
-                    case 'Mage_Sales_Model_Order_Invoice':
+                } else if($result INSTANCEOF Mage_Sales_Model_Order_Invoice) {
                         $resultData['type'] = 'Invoice';
-                        break;
-
-                    case 'Mage_Sales_Model_Order_Shipment':
+                } else if($result INSTANCEOF Mage_Sales_Model_Order_Invoice) {
+                        $resultData['type'] = 'Invoice';
+                } else if($result INSTANCEOF Mage_Sales_Model_Order_Shipment) {
                         $resultData['type'] = 'Shipment';
-                        break;
-
-                    case 'Mage_Sales_Model_Order_Creditmemo':
+                } else if($result INSTANCEOF Mage_Sales_Model_Order_Creditmemo) {
                         $resultData['type'] = 'Credit Memo';
-                        break;
-
-                    case 'Mage_Catalog_Model_Product':
+                } else if($result INSTANCEOF Mage_Catalog_Model_Product) {
                         $resultData['type'] = 'Product';
-                        break;
                 }
 
                 // Get the ID or SKU for the current object
