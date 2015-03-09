@@ -1,0 +1,145 @@
+<?php
+// Check if a previous search query is available
+$search = Mage::getSingleton('adminhtml/session')->getData('mobweb_objectfinder_search');
+
+// Unset the previously saved search query
+Mage::getSingleton('adminhtml/session')->setData('mobweb_objectfinder_search');
+?>
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Object Finder'); ?></h3></td>
+            <td class="a-right">
+                <button id="button-submit" onclick="editForm.submit()" class="scalable save" type="button"><span><?php echo $this->__('Search (Enter)'); ?></span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <form id="edit_form" name="edit_form" method="post" action="<?=$this->getUrl('*/*/post')?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <fieldset id="my-fieldset">
+            <table cellspacing="0" class="form-list">
+                <tr>
+                    <td class="label"><?=$this->__('Search term')?> <span class="required">*</span></td>
+                    <td class="input-ele"><input class="input-text required-entry" name="search" value="<?php echo $search; ?>" /></td>
+                </tr>
+                <tr>
+                    <td class="label"><?=$this->__('Object type')?> <span class="required">*</span></td>
+                    <td class="input-ele">
+                        <select name="type">
+                            <option value=""><?php echo $this->__('All'); ?></option>
+                            <?php
+                            foreach(Mage::helper('objectfinder')->getTypes() AS $model => $type) {
+                                echo sprintf('<option value="%s">%s</option>', $model, $this->__(ucfirst($type)));
+                            } ?>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>
+
+<?php
+$results = unserialize(Mage::getSingleton('adminhtml/session')->getData('mobweb_objectfinder_results'));
+if(isset($results) && $results) { ?>
+
+    <div class="content-header">
+        <table cellspacing="0" class="grid-header">
+            <tr>
+                <td><h3><?php echo $this->__('Search Results'); ?></h3></td>
+            </tr>
+        </table>
+    </div>
+
+    <?php
+    // Create a matrix table overview over the found objects
+    $matrix = '';
+
+    // Create the matrix table
+    $matrix .= '<div class="grid"><div class="hor-scroll"><table cellspacing="0" class="data" id="table-search-results">';
+
+    // Create the header row
+    $matrix .= '<colgroup>';
+    foreach($results[0] AS $key => $value) {
+        $matrix .= '<col width="100">';
+    }
+    $matrix .= '</colgroup>';
+    $matrix .= '<thead><tr class="headings">';
+    foreach($results[0] AS $key => $value) {
+        $matrix .= '<th class="no-link">' . $this->__(ucfirst($key)) . '</th>';
+    }
+    $matrix .= '</thead>';
+
+    // Create a body row for each object
+    $matrix .= '<tbody id="table-search-results-rows">';
+    $i = 0;
+    foreach($results AS $result) {
+        $matrix .= sprintf('<tr class="pointer %s">', ($i++ % 2 ? 'even' : ''));
+        foreach($result AS $key => $value) {
+            $matrix .= '<td>' . $this->__($value) . '</td>';
+        }
+        $matrix .= '</tr>';
+    }
+
+    $matrix .= '</tbody></table>';
+
+    echo $matrix;
+
+    Mage::getSingleton('adminhtml/session')->setData('mobweb_objectfinder_results');
+}
+?>
+
+<script type="text/javascript">
+    var editForm = new varienForm('edit_form');
+
+    // When the page is loaded, focus the "Search term" field
+    document.getElementsByName('search')[0].focus();
+
+    // "Enter" should ALWAYS submit the form
+    function detectEnterKeyAndSubmitForm(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        if(code == 13) {
+            document.getElementById('button-submit').click();
+        }
+    }
+    document.addEventListener("keydown", detectEnterKeyAndSubmitForm, false);
+
+    function toggleClass(element, className){
+        if (!element || !className){
+            return;
+        }
+
+        var classString = element.className, nameIndex = classString.indexOf(className);
+        if (nameIndex == -1) {
+            classString += ' ' + className;
+        }
+        else {
+            classString = classString.substr(0, nameIndex) + classString.substr(nameIndex+className.length);
+        }
+        element.className = classString;
+    }
+
+    // Prepare the styles for the table rows
+    var tableRows = document.getElementById('table-search-results-rows').children;
+
+    for (var i = 0; i < tableRows.length; i++) {
+
+        // If any row is clicked, open its link
+        tableRows[i].onclick = function() {
+
+            // Find and click the link
+            var link = this.getElementsByTagName("a")[0].click();
+        };
+
+        // Mouse-over & -out effects
+        tableRows[i].onmouseover = function() {
+            toggleClass(this, 'on-mouse');
+        }
+
+        tableRows[i].onmouseout = function() {
+            toggleClass(this, 'on-mouse');
+        }
+    }
+</script>

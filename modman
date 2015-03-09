@@ -1,0 +1,15 @@
+app/code/community/MobWeb/ObjectFinder app/code/community/MobWeb/ObjectFinder/
+
+app/design/adminhtml/default/default/layout/mobweb_objectfinder.xml app/design/adminhtml/default/default/layout/mobweb_objectfinder.xml
+
+app/design/adminhtml/default/default/template/mobweb_objectfinder/ app/design/adminhtml/default/default/template/mobweb_objectfinder/
+
+app/locale/de_CH/MobWeb_ObjectFinder.csv app/locale/de_CH/MobWeb_ObjectFinder.csv
+app/locale/de_CH/MobWeb_ObjectFinder.csv app/locale/de_DE/MobWeb_ObjectFinder.csv
+app/locale/de_CH/MobWeb_ObjectFinder.csv app/locale/de_AT/MobWeb_ObjectFinder.csv
+app/locale/en_US/MobWeb_ObjectFinder.csv app/locale/en_US/MobWeb_ObjectFinder.csv
+
+app/etc/modules/MobWeb_ObjectFinder.xml app/etc/modules/MobWeb_ObjectFinder.xml
+
+# Clear the cache
+@shell   rm -rf $PROJECT/var/cache/* && echo "Magento Cache cleared"

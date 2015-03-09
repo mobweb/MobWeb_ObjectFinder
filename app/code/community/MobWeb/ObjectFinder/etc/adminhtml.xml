@@ -1,0 +1,9 @@
+<config>
+    <menu>
+        <objectfinder module="objectfinder">
+            <title>Object Finder</title>
+            <sort_order>999</sort_order>               
+            <action>adminhtml/objectfinder</action>
+        </objectfinder>
+    </menu>
+</config> 

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <MobWeb_ObjectFinder>
+            <version>0.1.0</version>
+        </MobWeb_ObjectFinder>
+    </modules>
+    <global>
+        <blocks>
+            <objectfinder>
+                <class>MobWeb_ObjectFinder_Block</class>
+            </objectfinder>
+        </blocks>
+        <models>
+            <objectfinder>
+                <class>MobWeb_ObjectFinder_Model</class>
+            </objectfinder>
+        </models>
+        <helpers>
+            <objectfinder>
+                <class>MobWeb_ObjectFinder_Helper</class>
+            </objectfinder>
+        </helpers>
+        <events>
+            <!-- Debugging observer -->
+            <!--
+            <controller_front_init_before>
+                <observers>
+                    <brandturnover>
+                        <class>brandturnover/observer</class>
+                        <method>captureOrderSave</method>
+                        <type>singleton</type>
+                    </brandturnover >
+                </observers>
+            </controller_front_init_before>
+            -->
+        </events>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <objectfinder>
+                    <file>mobweb_objectfinder.xml</file>
+                </objectfinder>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <objectfinder>
+                    <files>
+                        <default>MobWeb_ObjectFinder.csv</default>
+                    </files>
+                </objectfinder>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <MobWeb_ObjectFinder after="Mage_Adminhtml">MobWeb_ObjectFinder</MobWeb_ObjectFinder>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

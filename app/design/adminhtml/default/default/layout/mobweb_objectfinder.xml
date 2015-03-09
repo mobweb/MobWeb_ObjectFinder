@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	<adminhtml_objectfinder_index>
+		<reference name="menu">
+			<action method="setActive">
+				<menupath>objectfinder</menupath>
+			</action>
+		</reference>
+		<reference name="content">
+			<block type="objectfinder/objectfinder" name="mobweb_objectfinder_objectfinder" template="mobweb_objectfinder/objectfinder.phtml" />
+		</reference>
+	</adminhtml_objectfinder_index>
+</layout>
