@@ -2,6 +2,8 @@
 
 class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 {
+	private $searchResultLimitPerType = 10;
+
 	public function getRedirectParameters($object)
 	{
 		if($object INSTANCEOF Mage_Sales_Model_Order) {
@@ -54,6 +56,7 @@ class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 		$resultCollection->addAttributeToFilter(
 			'increment_id', array('like' => '%' . $search . '%')
 		);
+		$resultCollection->setPageSize($this->searchResultLimitPerType)->setCurPage(1);
 
 		// Parse the collection into an array
 		$results = array();
@@ -71,6 +74,7 @@ class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 		$resultCollection->addAttributeToFilter(
 			'increment_id', array('like' => '%' . $search . '%')
 		);
+		$resultCollection->setPageSize($this->searchResultLimitPerType)->setCurPage(1);
 
 		// Parse the collection into an array
 		$results = array();
@@ -88,6 +92,7 @@ class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 		$resultCollection->addAttributeToFilter(
 			'increment_id', array('like' => '%' . $search . '%')
 		);
+		$resultCollection->setPageSize($this->searchResultLimitPerType)->setCurPage(1);
 
 		// Parse the collection into an array
 		$results = array();
@@ -105,6 +110,7 @@ class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 		$resultCollection->addAttributeToFilter(
 			'increment_id', array('like' => '%' . $search . '%')
 		);
+		$resultCollection->setPageSize($this->searchResultLimitPerType)->setCurPage(1);
 
 		// Parse the collection into an array
 		$results = array();
@@ -125,6 +131,7 @@ class MobWeb_ObjectFinder_Helper_Data extends Mage_Core_Helper_Abstract
 		$resultCollection->addAttributeToSelect(array(
 			'name'
 		));
+		$resultCollection->setPageSize($this->searchResultLimitPerType)->setCurPage(1);
 
 		// Parse the collection into an array
 		$results = array();
