@@ -6,6 +6,7 @@
 "MobWeb_ObjectFinder::Invoice","Rechnung"
 "MobWeb_ObjectFinder::Shipment","Versand"
 "MobWeb_ObjectFinder::Creditmemo","Gutschrift"
+"MobWeb_ObjectFinder::Credit Memo","Gutschrift"
 "MobWeb_ObjectFinder::Product","Produkt"
 "Search Results","Suchresultate"
 "Id","ID"
