@@ -10,7 +10,7 @@ This "universal" search makes it possible to very quickly find an object by ente
 
 The search form is available right in the header of the Admin Panel or on a separate page at the URL */objectfinder*:
 
-![Screenshot](/screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Installation
 
