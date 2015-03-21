@@ -10,6 +10,11 @@
             <objectfinder>
                 <class>MobWeb_ObjectFinder_Block</class>
             </objectfinder>
+            <adminhtml>
+                <rewrite>
+                    <page_header>MobWeb_Objectfinder_Block_Page_Header</page_header>
+                </rewrite>
+            </adminhtml>
         </blocks>
         <models>
             <objectfinder>
