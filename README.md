@@ -8,6 +8,10 @@ Additionally, you may select an object type filter before submitting your search
 
 This "universal" search makes it possible to very quickly find an object by entering its ID or SKU, for example when using a barcode reader.
 
+The search form is available right in the header of the Admin Panel or on a separate page at the URL */objectfinder*:
+
+![Screenshot](/screenshot.png)
+
 ## Installation
 
 Install using [colinmollenhour/modman](https://github.com/colinmollenhour/modman/).
