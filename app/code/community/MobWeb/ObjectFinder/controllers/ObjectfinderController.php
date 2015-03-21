@@ -115,7 +115,7 @@ class MobWeb_ObjectFinder_ObjectfinderController extends Mage_Adminhtml_Controll
 
                 // Get the redirect parameters for the current object
                 $resultRedirectParameters = Mage::helper('objectfinder')->getRedirectParameters($result);
-                $resultData['url'] = sprintf('<a href="%s">%s</a>', Mage::helper('adminhtml')->getUrl($resultRedirectParameters[0], $resultRedirectParameters[1]), $this->__('View'));
+                $resultData['action'] = sprintf('<a href="%s">%s</a>', Mage::helper('adminhtml')->getUrl($resultRedirectParameters[0], $resultRedirectParameters[1]), $this->__('View'));
 
                 $resultsArray[] = $resultData;
             }
