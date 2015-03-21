@@ -15,4 +15,5 @@
 "Multiple objects have been found for your search for «%s»","Bei der Suche nach «%s» wurden mehrere Objekte gefunden"
 "No objects match your search for «%s»","Bei der Suche nach «%s» wurden keine Objekte gefunden"
 "MobWeb_ObjectFinder::Action", "Aktion"
-"MobWeb_ObjectFinder::View", "Ansicht"
+"adminhtml::View", "Ansicht"
+"MobWeb_ObjectFinder::Search", "Suchen"
